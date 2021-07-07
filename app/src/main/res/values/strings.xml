@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SystemBars</string>
+    <string name="article">article</string>
+    <string name="music">music</string>
+    <string name="place">place</string>
+    <string name="favorite">favorite</string>
+
+</resources>
