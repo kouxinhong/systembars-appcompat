@@ -23,10 +23,12 @@ class SystemBars private constructor() {
 
 
     companion object {
-        val instance by lazy(mode = LazyThreadSafetyMode.NONE){ SystemBars() }
+        val instance by lazy(mode = LazyThreadSafetyMode.NONE) { SystemBars() }
+
         //LazyThreadSafetyMode.SYNCHRONIZED可以省略
-//        val instanceSync by lazy { LazyThreadSafetyMode.SYNCHRONIZED }
-//        val instancePublic by lazy { LazyThreadSafetyMode.PUBLICATION }
+        val instanceSync by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) { SystemBars() }
+
+        val instancePublic by lazy (mode = LazyThreadSafetyMode.PUBLICATION ) { SystemBars() }
     }
 
     @UiThread
