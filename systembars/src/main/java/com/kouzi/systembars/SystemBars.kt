@@ -36,6 +36,7 @@ class SystemBars private constructor() {
         val bottomView = rootView.findViewById<View>(bottomIdRes)
         setEdgeToEdge(activity,rootView,statusBarColor,bottomView)
     }
+
     @UiThread
     fun showSystemBars(view: View){
         val controller = ViewCompat.getWindowInsetsController(view)
@@ -47,22 +48,26 @@ class SystemBars private constructor() {
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.hide(WindowInsetsCompat.Type.systemBars())
     }
+
     @UiThread
     fun setSystemBars(activity: AppCompatActivity, rootView: View,@ColorRes statusBarColor: Int,bottomView: View? = null) {
         setEdgeToEdge(activity,rootView,statusBarColor,bottomView)
     }
+
     @UiThread
     fun showStatusBars(view: View, isAppearanceLightStatusBars: Boolean){
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.show(WindowInsetsCompat.Type.statusBars())
         controller?.isAppearanceLightStatusBars = isAppearanceLightStatusBars
     }
+
     @UiThread
     fun hideStatusBars(view: View,isAppearanceLightStatusBars: Boolean) {
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.hide(WindowInsetsCompat.Type.statusBars())
         controller?.isAppearanceLightStatusBars = isAppearanceLightStatusBars
     }
+
     @UiThread
     fun showNavigationBars(view: View, isAppearanceLightStatusBars: Boolean){
         val controller = ViewCompat.getWindowInsetsController(view)
@@ -83,16 +88,19 @@ class SystemBars private constructor() {
         BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 */
     }
+
     @UiThread
     fun showIme(view: View){
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.show(WindowInsetsCompat.Type.ime())
     }
+
     @UiThread
     fun hideIme(view: View){
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.hide(WindowInsetsCompat.Type.ime())
     }
+
     //https://developer.android.google.cn/training/gestures/edge-to-edge#java
     private fun setEdgeToEdge(activity: AppCompatActivity, rootView: View, @ColorRes statusBarColor: Int, bottomView: View? = null) {
         val window = activity.window
