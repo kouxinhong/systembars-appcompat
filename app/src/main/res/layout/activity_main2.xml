@@ -10,7 +10,6 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Widget.MaterialComponents.AppBarLayout.Primary"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
@@ -18,8 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="@color/white"
             app:layout_collapseMode="pin"
-            app:popupTheme="@style/Theme.SystemBars"
+            android:theme="@style/Theme.SystemBars"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
 <!--            <TextView-->
 <!--                android:layout_width="wrap_content"-->
@@ -39,12 +40,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1.开启全面屏体验，让应用的内容铺满整个屏幕\n
-2.处理与系统 UI 的视觉冲突\n
-3.处理与系统手势之间的冲突\n
-4.各种全面屏体验场景，以及如何适配它们\n
-5.现在就让我们开启  的全面屏体验之旅。"
-        android:background="@color/white"
+        android:text="@string/navigation_bars_content"
+        android:background="?android:attr/colorBackground"
+        android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->

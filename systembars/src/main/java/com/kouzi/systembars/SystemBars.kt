@@ -82,7 +82,7 @@ class SystemBars private constructor() {
     @UiThread
     fun showNavigationBars(view: View, isAppearanceLightStatusBars: Boolean){
         val controller = ViewCompat.getWindowInsetsController(view)
-        controller?.show(WindowInsetsCompat.Type.navigationBars())
+//        controller?.show(WindowInsetsCompat.Type.navigationBars())
         controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
     }
 

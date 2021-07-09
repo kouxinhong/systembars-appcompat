@@ -1,9 +1,12 @@
 package com.kouzi.systembars
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import androidx.core.content.ContextCompat
 import com.kouzi.systembars.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +16,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navigationBarsColor= if(Build.VERSION.SDK_INT >= 26) R.color.white_300 else R.color.black
+        val mode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        val navigationBarsColor = if( mode == Configuration.UI_MODE_NIGHT_YES){
+            if (Build.VERSION.SDK_INT >= 26) R.color.white_300 else R.color.black
+        }else{
+            if (Build.VERSION.SDK_INT >= 26) R.color.black_300 else R.color.black
+        }
+
 
         SystemBars.instance.setSystemBars(
             this,
@@ -21,16 +31,18 @@ class MainActivity : AppCompatActivity() {
             R.color.purple_500,
             navigationBarsColor,
             binding.bottomNavigation,
-            false
+            true
         )
-       // SystemBars.instance.showNavigationBars(binding.root,true,)
+        // SystemBars.instance.showNavigationBars(binding.root,true,)
         setBadge()
 
         binding.javaTest.setOnClickListener {
-            val i = Intent(this,MainActivity2::class.java)
+            val i = Intent(this, MainActivity2::class.java)
             startActivity(i)
         }
     }
+
+
 
     private fun setBadge() {
         val badge = binding.bottomNavigation.getOrCreateBadge(R.id.place)
