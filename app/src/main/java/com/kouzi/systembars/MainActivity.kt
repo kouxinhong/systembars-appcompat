@@ -47,6 +47,6 @@ class MainActivity : AppCompatActivity() {
     private fun setBadge() {
         val badge = binding.bottomNavigation.getOrCreateBadge(R.id.place)
         badge.isVisible = true
-        badge.number = 5
+        badge.number =5
     }
 }
