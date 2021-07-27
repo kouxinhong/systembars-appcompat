@@ -1,4 +1,11 @@
-package com.kouzi.systembars;
+package com.kouzi.systembars.demo;
+
+import android.content.res.Configuration;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,16 +13,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.res.Configuration;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kouzi.systembars.demo.R;
+import com.kouzi.systembars.SystemBars;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
         int navigationBarsColor = Build.VERSION.SDK_INT >= 26 ? R.color.white_300 : R.color.black;
         BottomNavigationView BottomNavigationView = findViewById(R.id.bottom_navigation);
-        SystemBars.getInstance().setSystemBars(this, toolbar, android.R.color.transparent,navigationBarsColor, BottomNavigationView, true);
+        SystemBars.getInstance().setSystemBars(this, toolbar,navigationBarsColor, BottomNavigationView, true);
     }
 
     @Override
@@ -57,13 +58,10 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.action_day_night){
-            Log.i(TAG, "onOptionsItemSelected: "+isDarkThem());
             if(isDarkThem()){
-                SystemBars.getInstance().showNavigationBars(toolbar,true);
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }else {
-                SystemBars.getInstance().showNavigationBars(toolbar,false);
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
             return true;
         }else {

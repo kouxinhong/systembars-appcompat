@@ -9,7 +9,7 @@
         android:id="@+id/main_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Widget.MaterialComponents.AppBarLayout.Primary"
+        android:theme="@style/Theme.SystemBars"
         app:layout_constraintTop_toTopOf="parent">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -38,11 +38,41 @@
         android:id="@+id/java_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="java test"
+        android:textAllCaps="false"
+        android:text="toolbar setSupportActionBar test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/navigation_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="有actionBar navigation bar test"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/java_test" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/show_systemBars_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="show systemBars test"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_bar" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/show_ime"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="请输入..."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/show_systemBars_bar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

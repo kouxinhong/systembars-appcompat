@@ -1,4 +1,4 @@
-package com.kouzi.systembars
+package com.kouzi.systembars.demo
 
 import org.junit.Test
 

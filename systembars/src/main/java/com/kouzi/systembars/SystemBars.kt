@@ -29,27 +29,37 @@ class SystemBars private constructor() {
         val instance by lazy(mode = LazyThreadSafetyMode.NONE) { SystemBars() }
 
         //LazyThreadSafetyMode.SYNCHRONIZED可以省略
+        @JvmStatic
         val instanceSync by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) { SystemBars() }
-
+        @JvmStatic
         val instancePublic by lazy (mode = LazyThreadSafetyMode.PUBLICATION ) { SystemBars() }
     }
 
-//    @UiThread
-//    fun setSystemBars(activity: AppCompatActivity,view: View,@ColorRes statusBarColor: Int,@IdRes bottomIdRes: Int = 0){
-//        val bottomView = activity.findViewById<View>(bottomIdRes)
-//        setEdgeToEdge(activity,view,statusBarColor,bottomView)
-//    }
+    @UiThread
+    fun setNavigationBar(
+        activity: AppCompatActivity,
+        rootView: View,
+        @ColorRes navigationBarColor: Int,
+        bottomView: View,
+        isAppearanceLightStatusBars: Boolean = false) {
+        setEdgeToEdge(
+            activity,
+            rootView,
+            navigationBarColor,
+            bottomView,
+            isAppearanceLightStatusBars
+        )
+    }
+
 
     @UiThread
     fun setSystemBars(
         activity: AppCompatActivity,
         view: View,
-        @ColorRes statusBarColor: Int = 0,
         @ColorRes navigationBarColor: Int = 0,
         bottomView: View? = null,
-        isAppearanceLightStatusBars: Boolean = false
-    ) {
-        setEdgeToEdge(activity, view, statusBarColor,navigationBarColor, bottomView,isAppearanceLightStatusBars)
+        isAppearanceLightStatusBars: Boolean = false) {
+        setEdgeToEdge(activity, view,navigationBarColor, bottomView,isAppearanceLightStatusBars)
     }
 
     @UiThread
@@ -66,28 +76,28 @@ class SystemBars private constructor() {
 
 
     @UiThread
-    fun showStatusBars(view: View, isAppearanceLightStatusBars: Boolean){
+    internal fun showStatusBars(view: View, isAppearanceLightStatusBars: Boolean){
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.show(WindowInsetsCompat.Type.statusBars())
         controller?.isAppearanceLightStatusBars = isAppearanceLightStatusBars
     }
 
     @UiThread
-    fun hideStatusBars(view: View,isAppearanceLightStatusBars: Boolean) {
+    internal fun hideStatusBars(view: View,isAppearanceLightStatusBars: Boolean) {
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.hide(WindowInsetsCompat.Type.statusBars())
         controller?.isAppearanceLightStatusBars = isAppearanceLightStatusBars
     }
 
     @UiThread
-    fun showNavigationBars(view: View, isAppearanceLightStatusBars: Boolean){
+    internal fun showNavigationBars(view: View, isAppearanceLightStatusBars: Boolean){
         val controller = ViewCompat.getWindowInsetsController(view)
-//        controller?.show(WindowInsetsCompat.Type.navigationBars())
+        controller?.show(WindowInsetsCompat.Type.navigationBars())
         controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
     }
 
     @UiThread
-    fun hideNavigationBars(view: View,isAppearanceLightStatusBars: Boolean,behavior:Int) {
+    internal fun hideNavigationBars(view: View,isAppearanceLightStatusBars: Boolean,behavior:Int) {
         val controller = ViewCompat.getWindowInsetsController(view)
         controller?.hide(WindowInsetsCompat.Type.navigationBars())
         controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
@@ -116,23 +126,24 @@ class SystemBars private constructor() {
     private fun setEdgeToEdge(
         activity: AppCompatActivity,
         rootView: View,
-        @ColorRes statusBarColor: Int,
         @ColorRes navigationBarColor: Int,
         bottomView: View? = null,
-        isAppearanceLightStatusBars: Boolean
-    ) {
+        isAppearanceLightStatusBars: Boolean) {
         val window = activity.window
-        if(Build.VERSION.SDK_INT >= 29){
-            val controller = ViewCompat.getWindowInsetsController(rootView)
-            controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
-        }else{
+        if(Build.VERSION.SDK_INT >= 26){
             val controller = ViewCompat.getWindowInsetsController(rootView)
             controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
             window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+        if(Build.VERSION.SDK_INT >= 21){
+            window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
+        }
+        if (Build.VERSION.SDK_INT >= 29) {
+            val controller = ViewCompat.getWindowInsetsController(rootView)
             window.isStatusBarContrastEnforced = false
             window.isNavigationBarContrastEnforced = false
+            controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
+            window.navigationBarColor = ContextCompat.getColor(activity, android.R.color.transparent)
         }
         WindowCompat.setDecorFitsSystemWindows(window, false)
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, windowInsets ->
@@ -140,14 +151,8 @@ class SystemBars private constructor() {
             val mlp =  v.layoutParams as ViewGroup.MarginLayoutParams
             mlp.leftMargin = insets.left
             mlp.rightMargin = insets.right
-//            if(null == activity.supportActionBar){
-//                mlp.topMargin = insets.top
-//            }
             v.apply {
                 setPadding(paddingLeft, insets.top, paddingRight, paddingBottom)
-            }
-            if (Build.VERSION.SDK_INT >= 21) {
-                window.statusBarColor =  ContextCompat.getColor(activity,statusBarColor)
             }
             bottomView?.apply {
                 setPadding(paddingLeft, paddingTop, paddingRight, insets.bottom)
