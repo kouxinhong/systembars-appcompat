@@ -5,6 +5,7 @@ android statusbars and navigationBars utils
 # use
 
 ```kotlin
+//style ***.NoActionBar
    SystemBars.instance.setSystemBars(
             activity,
             rootView,
@@ -12,7 +13,17 @@ android statusbars and navigationBars utils
             bottomNavigationView,
             true
             )
+//style ***.*ActionBar
+
+  SystemBars.instance.setNavigationBar(
+            activity,
+            rootView,
+            navigationBarColor,
+            bottomNavigationView,
+            true
+        )
 ```
+
 # screenshot
 
 ![图1.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/edge.png)
