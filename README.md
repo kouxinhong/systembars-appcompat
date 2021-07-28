@@ -1,7 +1,19 @@
 # SystemBarsCompat
 
 android statusbars and navigationBars utils
----
+
+# use
+
+```kotlin
+   SystemBars.instance.setSystemBars(
+            activity,
+            rootView,
+            navigationBarsColor,
+            bottomNavigationView,
+            true
+            )
+```
+# screenshot
 
 ![图1.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/edge.png)
 
