@@ -2,16 +2,14 @@
 
 android statusbars and navigationBars utils
 
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/edge.png)
+![图1.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/edge.png)
 
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/1.png)
+![图2.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/1.png)
 
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/2.png)
+![图3.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/2.png)
 
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/4.png)
+![图4.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/3.png)
 
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/6.png)
+![图5.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/4.png)
 
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/7.png)
-
-![如图.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/8.png)
+![图6.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/5.png)
