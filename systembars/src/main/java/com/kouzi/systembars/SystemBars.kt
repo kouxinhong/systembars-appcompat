@@ -35,6 +35,15 @@ class SystemBars private constructor() {
         val instancePublic by lazy (mode = LazyThreadSafetyMode.PUBLICATION ) { SystemBars() }
     }
 
+    /**
+     * set statusBar and navigationBar
+     *
+     * @param activity *: AppCompatActivity
+     * @param rootView root layout view
+     * @param navigationBarColor navigationBar color
+     * @param bottomView  bottom view
+     * @param isAppearanceLightStatusBars navigationBar button color
+     */
     @UiThread
     fun setNavigationBar(
         activity: AppCompatActivity,
