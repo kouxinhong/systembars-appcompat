@@ -139,12 +139,12 @@ class SystemBars private constructor() {
         bottomView: View? = null,
         isAppearanceLightStatusBars: Boolean) {
         val window = activity.window
+         if(Build.VERSION.SDK_INT >= 21){
+            window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
+        }
         if(Build.VERSION.SDK_INT >= 26){
             val controller = ViewCompat.getWindowInsetsController(rootView)
             controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
-            window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
-        }
-        if(Build.VERSION.SDK_INT >= 21){
             window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
         }
         if (Build.VERSION.SDK_INT >= 29) {
