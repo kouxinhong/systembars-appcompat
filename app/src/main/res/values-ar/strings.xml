@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SystemBars</string>
+    <string name="article">文章</string>
+    <string name="music">音乐</string>
+    <string name="place">位置</string>
+    <string name="favorite">喜爱</string>
+    <string name="day_night">夜间</string>
+    <string name="navigation_bars_content">
+        1.开启全面屏体验，让应用的内容铺满整个屏幕\n
+        2.处理与系统 UI 的视觉冲突\n
+        3.处理与系统手势之间的冲突\n
+        4.各种全面屏体验场景，以及如何适配它们\n
+        5.现在就让我们开启  的全面屏体验之旅.
+    </string>
+
+</resources>

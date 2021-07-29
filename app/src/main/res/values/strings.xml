@@ -6,11 +6,11 @@
     <string name="favorite">favorite</string>
     <string name="day_night">dayNight</string>
     <string name="navigation_bars_content">
-        1.开启全面屏体验，让应用的内容铺满整个屏幕\n
-        2.处理与系统 UI 的视觉冲突\n
-        3.处理与系统手势之间的冲突\n
-        4.各种全面屏体验场景，以及如何适配它们\n
-        5.现在就让我们开启  的全面屏体验之旅.
+         1. Turn on the full screen experience, so that the content of the app covers the entire screen\n
+         2. Deal with visual conflicts with system UI\n
+         3. Deal with conflicts with system gestures\n
+         4. Various full-screen experience scenarios and how to adapt them\n
+         5.Now let us start the journey of full-screen experience.
     </string>
 
 </resources>

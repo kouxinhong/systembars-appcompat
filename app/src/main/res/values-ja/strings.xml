@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SystemBars</string>
+    <string name="article">論文</string>
+    <string name="music">音楽</string>
+    <string name="place">位置</string>
+    <string name="favorite">お気に入り</string>
+    <string name="day_night">夜に</string>
+    <string name="navigation_bars_content">
+        1.アプリのコンテンツが画面全体をカバーするように、フルスクリーンエクスペリエンスをオンにします\ n
+         2.システムUIとの視覚的な競合に対処する\ n
+         3.システムジェスチャとの競合に対処する\ n
+         4.さまざまなフルスクリーンエクスペリエンスシナリオとそれらを適応させる方法\ n
+         5.それでは、フルスクリーン体験の旅を始めましょう。
+    </string>
+
+</resources>
