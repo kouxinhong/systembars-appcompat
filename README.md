@@ -7,19 +7,19 @@ android statusbars and navigationBars utils
 1. Add the JitPack repository to your build file
 ```gradle
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+	...
+	maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 2. Add the dependency
 
 ```gradle
 dependencies {
-	        implementation 'com.github.kouxinhong:SystemBarsCompat:-SNAPSHOT'
-	}
+    implementation 'com.github.kouxinhong:SystemBarsCompat:0.1'
+}
 ```
 3. Add Activity
 ```kotlin
