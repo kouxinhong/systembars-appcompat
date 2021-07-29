@@ -42,27 +42,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.showSystemBarsBar.setOnClickListener {
-            isShowSystemBar = if(isShowSystemBar){
+            isShowSystemBar = if (isShowSystemBar) {
                 SystemBars.instance.hideSystemBars(binding.mainRoot)
                 false
-            }else{
+            } else {
                 SystemBars.instance.showSystemBars(binding.mainRoot)
                 true
             }
         }
 
         binding.showIme.setOnClickListener {
-            isShowSystemBar = if(isShowSystemBar){
+            isShowSystemBar = if (isShowSystemBar) {
                 SystemBars.instance.hideIme(binding.mainRoot)
                 false
-            }else{
+            } else {
                 SystemBars.instance.showIme(binding.mainRoot)
                 true
             }
         }
 
     }
-
 
 
     private fun setBadge() {
