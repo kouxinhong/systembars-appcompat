@@ -4,6 +4,10 @@ android statusbars and navigationBars utils
 
 # use
 
+* `support androidx`
+* `minSdkVersion > 20`
+* `jvmTarget = '1.8'`
+
 1. Add the JitPack repository to your build file
 ```gradle
 allprojects {
