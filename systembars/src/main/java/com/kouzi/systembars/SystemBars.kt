@@ -151,16 +151,18 @@ class SystemBars private constructor() {
             window.navigationBarColor = ContextCompat.getColor(activity, android.R.color.transparent)
         }
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        val bottomViewPaddingBottom = bottomView?.paddingBottom ?: 0
+        val rootViewPaddingBottom = rootView.paddingTop
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             val mlp =  v.layoutParams as ViewGroup.MarginLayoutParams
             mlp.leftMargin = insets.left
             mlp.rightMargin = insets.right
             v.apply {
-                setPadding(paddingLeft, insets.top, paddingRight, paddingBottom)
+                setPadding(paddingLeft, rootViewPaddingBottom+insets.top, paddingRight, paddingBottom)
             }
             bottomView?.apply {
-                setPadding(paddingLeft, paddingTop, paddingRight, insets.bottom)
+                setPadding(paddingLeft, paddingTop, paddingRight, bottomViewPaddingBottom+insets.bottom)
             }
             WindowInsetsCompat.CONSUMED
         }
