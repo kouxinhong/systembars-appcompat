@@ -22,7 +22,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.kouxinhong:SystemBarsCompat:0.3.1-alpha'
+    implementation 'com.github.kouxinhong:systembars-appcompat:0.3.1-alpha'
 }
 ```
 3. Add Activity
