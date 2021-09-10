@@ -1,6 +1,7 @@
 # SystemBarsCompat
 [![](https://jitpack.io/v/kouxinhong/systembars-appcompat.svg)](https://jitpack.io/#kouxinhong/systembars-appcompat)
 [![](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://github.com/kouxinhong/systembars-appcompat/main/LICENSE)
+[![Build Status](https://www.travis-ci.org/systembars-appcompat/main.svg?branch=master)](https://www.travis-ci.org/systembars-appcompat/main)
 
 android statusbars and navigationBars utils
 
