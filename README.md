@@ -5,12 +5,13 @@
 
 android statusbars and navigationBars utils
 
-# use
+## Requirements
 
-* `just support androidx`
+* `support androidx`
 * `minSdkVersion > 20`
 * `jvmTarget = '1.8'`
 
+## Download
 1. Add the JitPack repository to your build file
 ```gradle
 allprojects {
@@ -49,7 +50,7 @@ dependencies {
         )
 ```
 
-# screenshot
+## screenshot
 
 ![图1.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/edge.png)
 
@@ -63,7 +64,7 @@ dependencies {
 
 ![图6.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/5.png)
 
-# License
+## License
 
 ```
 Copyright (C) 2020. Dylan Cai
