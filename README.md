@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://github.com/kouxinhong/systembars-appcompat/main/LICENSE)
 [![Build Status](https://www.travis-ci.org/systembars-appcompat/main.svg?branch=master)](https://www.travis-ci.org/systembars-appcompat/main)
 
-android statusbars and navigationBars utils
+Android statusbars and navigationBars library utils,make the full screen display better.
 
 ## Requirements
 
@@ -50,7 +50,7 @@ dependencies {
         )
 ```
 
-## screenshot
+##  Screenshot
 
 ![图1.png](https://github.com/kouxinhong/SystemBarsCompat/blob/main/image/edge.png)
 
