@@ -7,7 +7,7 @@ android statusbars and navigationBars utils
 
 # use
 
-* `support androidx`
+* `just support androidx`
 * `minSdkVersion > 20`
 * `jvmTarget = '1.8'`
 
