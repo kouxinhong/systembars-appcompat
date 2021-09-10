@@ -1,6 +1,7 @@
 package com.kouzi.systembars
 
 import android.os.Build
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
@@ -56,6 +57,22 @@ class SystemBars private constructor() {
         )
     }
 
+    /**
+     * GesturesNavigation or ButtonNavigation Listener
+     *
+     * @param activity AppCompatActivity
+     * @param rootView layout root View
+     * @param listener (isGestures: Boolean) -> Unit
+     */
+    @UiThread
+    fun setOnGesturesNavigationListener(activity: AppCompatActivity,rootView: View, listener: (isGestures: Boolean) -> Unit){
+        WindowCompat.setDecorFitsSystemWindows(activity.window, false)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            listener.invoke(insets.bottom > 90)
+            WindowInsetsCompat.CONSUMED
+        }
+    }
 
     @UiThread
     fun setSystemBars(
@@ -135,24 +152,11 @@ class SystemBars private constructor() {
         bottomView: View? = null,
         isAppearanceLightStatusBars: Boolean) {
         val window = activity.window
-         if(Build.VERSION.SDK_INT >= 21){
-            window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
-        }
-        if(Build.VERSION.SDK_INT >= 26){
-            val controller = ViewCompat.getWindowInsetsController(rootView)
-            controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
-            window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
-        }
-        if (Build.VERSION.SDK_INT >= 29) {
-            val controller = ViewCompat.getWindowInsetsController(rootView)
-            window.isStatusBarContrastEnforced = false
-            window.isNavigationBarContrastEnforced = false
-            controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
-            window.navigationBarColor = ContextCompat.getColor(activity, android.R.color.transparent)
-        }
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         val bottomViewPaddingBottom = bottomView?.paddingBottom ?: 0
         val rootViewPaddingBottom = rootView.paddingTop
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             val mlp =  v.layoutParams as ViewGroup.MarginLayoutParams
@@ -163,6 +167,25 @@ class SystemBars private constructor() {
             }
             bottomView?.apply {
                 setPadding(paddingLeft, paddingTop, paddingRight, bottomViewPaddingBottom+insets.bottom)
+            }
+            if(Build.VERSION.SDK_INT >= 21){
+                window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
+            }
+            if(Build.VERSION.SDK_INT >= 26){
+                val controller = ViewCompat.getWindowInsetsController(rootView)
+                controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
+                window.navigationBarColor =  ContextCompat.getColor(activity,navigationBarColor)
+            }
+            if (Build.VERSION.SDK_INT >= 29) {
+                val controller = ViewCompat.getWindowInsetsController(rootView)
+                window.isStatusBarContrastEnforced = false
+                window.isNavigationBarContrastEnforced = false
+                controller?.isAppearanceLightNavigationBars = isAppearanceLightStatusBars
+                window.navigationBarColor= if(insets.bottom > 90) {
+                    ContextCompat.getColor(activity, navigationBarColor)
+                } else{
+                    ContextCompat.getColor(activity, android.R.color.transparent)
+                }
             }
             WindowInsetsCompat.CONSUMED
         }

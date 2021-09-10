@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.kouzi.systembars.SystemBars
 import com.kouzi.systembars.demo.databinding.ActivityMainBinding
@@ -16,20 +17,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val mode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val navigationBarsColor = if (mode == Configuration.UI_MODE_NIGHT_YES) {
-            if (Build.VERSION.SDK_INT >= 26) R.color.white_300 else R.color.black
-        } else {
-            if (Build.VERSION.SDK_INT >= 26) R.color.black_300 else R.color.black
+        SystemBars.instance.apply {
+            val mode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            val navigationBarsColor = if (mode == Configuration.UI_MODE_NIGHT_YES) {
+                if (Build.VERSION.SDK_INT >= 26) R.color.white_300 else R.color.black
+            } else {
+                if (Build.VERSION.SDK_INT >= 26) R.color.black_300 else R.color.black
+            }
+            setSystemBars(
+                this@MainActivity,
+                binding.mainRoot,
+                navigationBarsColor,
+                binding.bottomNavigation,
+                true
+            )
         }
-
-        SystemBars.instance.setSystemBars(
-            this,
-            binding.mainRoot,
-            navigationBarsColor,
-            binding.bottomNavigation,
-            true
-        )
         setBadge()
 
         binding.javaTest.setOnClickListener {
