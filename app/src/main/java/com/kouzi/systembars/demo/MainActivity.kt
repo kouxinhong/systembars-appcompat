@@ -12,6 +12,7 @@ import com.kouzi.systembars.demo.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var isShowSystemBar: Boolean = false
+    private var isShowIme: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 if (Build.VERSION.SDK_INT >= 26) R.color.black_300 else R.color.black
             }
-            setSystemBars(
+            setupImmersiveMode(
                 this@MainActivity,
                 binding.mainRoot,
                 navigationBarsColor,
@@ -54,11 +55,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.showIme.setOnClickListener {
-            isShowSystemBar = if (isShowSystemBar) {
+            isShowIme = if (isShowIme) {
                 SystemBars.instance.hideIme(binding.mainRoot)
                 false
             } else {
-                SystemBars.instance.showIme(binding.mainRoot)
+                SystemBars.instance.showIme(binding.showIme)
                 true
             }
         }

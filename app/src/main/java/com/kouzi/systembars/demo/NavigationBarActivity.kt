@@ -20,7 +20,7 @@ class NavigationBarActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= 26) R.color.black_300 else R.color.black
         }
 
-        SystemBars.instance.setNavigationBar(
+        SystemBars.instance.setupImmersiveMode(
             this,
             binding.navigationBarRoot,
             navigationBarsColor,

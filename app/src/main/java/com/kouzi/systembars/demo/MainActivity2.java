@@ -14,6 +14,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
+import android.content.res.ColorStateList;
+import androidx.core.content.ContextCompat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kouzi.systembars.demo.R;
 import com.kouzi.systembars.SystemBars;
@@ -44,9 +46,19 @@ public class MainActivity2 extends AppCompatActivity {
                 finish();
             }
         });
-        int navigationBarsColor = Build.VERSION.SDK_INT >= 26 ? R.color.white_300 : R.color.black;
-        BottomNavigationView BottomNavigationView = findViewById(R.id.bottom_navigation);
-        SystemBars.getInstance().setSystemBars(this, toolbar,navigationBarsColor, BottomNavigationView, true);
+        // 根据暗黑模式设置不同的导航栏颜色
+        int uiMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int navigationBarColorResId;
+        if (uiMode == Configuration.UI_MODE_NIGHT_YES) {
+            navigationBarColorResId = (Build.VERSION.SDK_INT >= 26) ? R.color.white_300 : R.color.black;
+        } else {
+            navigationBarColorResId = (Build.VERSION.SDK_INT >= 26) ? R.color.black_300 : R.color.black;
+        }        
+        // 解析颜色资源 - 使用ContextCompat确保更好的兼容性
+        int navigationBarColor = ContextCompat.getColor(this, navigationBarColorResId);
+        
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        SystemBars.getInstance().setupImmersiveMode(this, toolbar, navigationBarColor, bottomNavigationView, true);
     }
 
     @Override
